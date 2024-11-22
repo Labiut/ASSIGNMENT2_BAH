@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    background: url('background1.png') no-repeat bottom center;
+    background-size: cover;
+    border-bottom-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  .fly-button {
+    @extend .custom-button;
+    background: linear-gradient(135deg, #ADD8E6, #87CEEB); 
+    padding: 12px 26px; 
+  }
+  
+  .flight-details {
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .flight-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .option-icon {
+    width: 120px;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    position: relative; 
+  }
+  
+  .suggestions {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    width: calc(100% - 20px);
+    margin-top: 5px;
+    display: none;
+  }
+  
+  .suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .suggestions div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  
+  .toggle {
+    display: none; 
+  }
+  
+  
+  .dropdown-button {
+    @extend .custom-button;
+    display: block; 
+  }
+  
+  
+  .dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .toggle:checked + .dropdown-content {
+    display: block; 
+  }
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  .passenger-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .passenger-control span {
+    width: 100px;
+    display: block;
+    text-align: left;
+  }
+  
+  .passenger-control small {
+    font-size: 10px;
+    color: #777;
+  }
+  
+  .passenger-control button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .passenger-control input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+  }
+  
+  .box-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .box {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #007BFF, #00d4ff);
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .box label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .box input {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .search-button-box {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .search-button {
+    @extend .custom-button;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  
+  .custom-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 80px 160px; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .passenger-control .plus-button,
+  .passenger-control .minus-button {
+    background-color: blue; 
+  }
+  

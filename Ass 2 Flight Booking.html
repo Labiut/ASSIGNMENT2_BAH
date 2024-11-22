@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search and Results</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff; /* Changed to blue */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff; /* Changed to blue */
+            text-align: center;
+        }
+        .search-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .search-form select, .search-form input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-form button {
+            background-color: #007bff; /* Changed to blue */
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-form button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .results-container {
+            display: none;
+            margin-top: 40px;
+        }
+        .result {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fafafa;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .result img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .result h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #007bff; /* Changed to blue */
+        }
+        .flight-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .flight-details div {
+            flex: 1;
+            padding: 5px;
+        }
+        .select-flight {
+            text-align: right;
+        }
+        .select-flight button {
+            background-color: #007bff; /* Changed to blue */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .select-flight button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .more-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .toggle-details {
+            cursor: pointer;
+            color: #007bff; /* Changed to blue */
+            margin-top: 10px;
+        }
+        .toggle-details:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Flight Booking - Mir Airline</h1> <!-- Changed airline name -->
+    </div>
+
+    <div class="container">
+        <h2>Search for Flights</h2>
+        <form id="flightForm" class="search-form">
+            <label for="fromCountry">Departure Country</label>
+            <select id="fromCountry" name="fromCountry" required>
+                <option value="">Select Departure Country</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Philippines">Philippines</option>
+            </select>
+
+            <label for="toCountry">Destination Country</label>
+            <select id="toCountry" name="toCountry" required>
+                <option value="">Select Destination Country</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Philippines">Philippines</option>
+            </select>
+
+            <label for="departureDate">Departure Date</label>
+            <input type="date" id="departureDate" name="departureDate" required>
+
+            <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" name="returnDate">
+
+            <button type="submit">Search Flights</button>
+        </form>
+
+        <div class="results-container" id="flightResults">
+            <h2>Available Flights</h2>
+
+            <div class="result" id="flightResult1">
+                <img src= "https://t4.ftcdn.net/jpg/05/28/69/29/360_F_528692947_a24JXuek0FtFN2GVUwf0vNvBHltKbGkC.jpg" alt="Airplane">
+                <div>
+                    <h3>Flight from <span id="fromCountryResult1"></span> to <span id="toCountryResult1"></span></h3>
+                    <div class="flight-details">
+                        <div><strong>Departure:</strong> <span id="departureDateResult1"></span></div>
+                        <div><strong>Return:</strong> <span id="returnDateResult1"></span></div>
+                        <div class="select-flight">
+                            <strong>Price:</strong> $120
+                            <button class="select-button">Select Flight</button>
+                        </div>
+                    </div>
+                    <span class="toggle-details">Show Details</span>
+                    <div class="more-details" id="details1">
+                        <p><strong>Airline:</strong> Mir Airline</p> <!-- Changed airline -->
+                        <p><strong>Flight Duration:</strong> 2 hours</p>
+                        <p><strong>Layover:</strong> None</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result" id="flightResult2">
+                <img src="https://t4.ftcdn.net/jpg/05/28/69/29/360_F_528692947_a24JXuek0FtFN2GVUwf0vNvBHltKbGkC.jpg" alt="Airplane">
+                <div>
+                    <h3>Flight from <span id="fromCountryResult2"></span> to <span id="toCountryResult2"></span></h3>
+                    <div class="flight-details">
+                        <div><strong>Departure:</strong> <span id="departureDateResult2"></span></div>
+                        <div><strong>Return:</strong> <span id="returnDateResult2"></span></div>
+                        <div class="select-flight">
+                            <strong>Price:</strong> $150
+                            <button class="select-button">Select Flight</button>
+                        </div>
+                    </div>
+                    <span class="toggle-details">Show Details</span>
+                    <div class="more-details" id="details2">
+                        <p><strong>Airline:</strong> Mir Airline</p> <!-- Changed airline -->
+                        <p><strong>Flight Duration:</strong> 2.5 hours</p>
+                        <p><strong>Layover:</strong> None</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission and show results
+        document.getElementById('flightForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Get form data
+            const fromCountry = document.getElementById('fromCountry').value;
+            const toCountry = document.getElementById('toCountry').value;
+            const departureDate = document.getElementById('departureDate').value;
+            const returnDate = document.getElementById('returnDate').value;
+
+            // Display results section
+            document.getElementById('flightResults').style.display = 'block';
+
+            // Populate results with the user's search input
+            document.getElementById('fromCountryResult1').innerText = fromCountry;
+            document.getElementById('toCountryResult1').innerText = toCountry;
+            document.getElementById('departureDateResult1').innerText = departureDate;
+            document.getElementById('returnDateResult1').innerText = returnDate || 'N/A';
+
+            document.getElementById('fromCountryResult2').innerText = fromCountry;
+            document.getElementById('toCountryResult2').innerText = toCountry;
+            document.getElementById('departureDateResult2').innerText = departureDate;
+            document.getElementById('returnDateResult2').innerText = returnDate || 'N/A';
+        });
+
+        // Toggle flight details
+        document.querySelectorAll('.toggle-details').forEach((toggle) => {
+            toggle.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                if (details.style.display === "none" || details.style.display === "") {
+                    details.style.display = "block";
+                    this.innerText = "Hide Details";
+                } else {
+                    details.style.display = "none";
+                    this.innerText = "Show Details";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>  

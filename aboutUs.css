@@ -1,0 +1,43 @@
+ /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* Light ocean blue */
+    color: #01579b; /* Deep blue text */
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #0288d1; /* Bright ocean blue */
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Headings */
+h1, h2 {
+    color: #0288d1;
+}
+
+/* Footer */
+footer {
+    background-color: #0288d1;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

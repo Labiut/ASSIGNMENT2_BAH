@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flight Booking System Login Page">
+    <title>Flight Booking System - Login</title>
+    <style>
+        /* General reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('loginmenu.jpeg'); /* Your custom background image path */
+            background-size: cover; /* Cover the entire screen */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repetition */
+            background-attachment: fixed; /* Keep the background fixed during scrolling */
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Center the container */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Login form styling */
+        .login-form {
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            max-width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            border: 2px solid #005f9e; /* Blue border around the login form */
+        }
+
+        /* Greeting text */
+        .login-form h1 {
+            font-size: 26px;
+            color: #005f9e;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .login-form h2 {
+            margin-bottom: 25px;
+            color: #333333;
+            font-size: 18px;
+        }
+
+        /* Input field styling */
+        .input-field {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-field input {
+            width: calc(100% - 2px);
+            padding: 14px 20px;
+            border: 2px solid #005f9e;
+            border-radius: 8px;
+            background: #f1f9ff;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            box-sizing: border-box;
+        }
+
+        .input-field input:focus {
+            border-color: #005f9e;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 95, 158, 0.2);
+            background: #eaf4ff;
+        }
+
+        .input-field label {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 8px;
+        }
+
+        /* Button styling */
+        .login-btn, .signup-btn {
+            background: #005f9e;
+            color: #ffffff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .login-btn:hover, .signup-btn:hover {
+            background: #00407a;
+            transform: translateY(-2px);
+        }
+
+        .signup-btn {
+            background: #0076ff;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            background: #0057b8;
+        }
+
+        .login-form a {
+            display: inline-block;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #005f9e;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+
+        .login-form a:hover {
+            color: #00407a;
+        }
+
+        /* Floating effect */
+        .floating-elements {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-duration: 9s;
+        }
+
+        .floating-elements:nth-child(2) {
+            top: 40%;
+            left: 65%;
+            animation-duration: 7s;
+        }
+
+        .floating-elements:nth-child(3) {
+            top: 75%;
+            left: 25%;
+            animation-duration: 10s;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(15px);
+            }
+        }
+
+        /* Airplane icon */
+        .airplane-icon {
+            position: absolute;
+            top: -40px;
+            left: calc(50% - 40px);
+            width: 80px;
+            height: 80px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/7445/7445982.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <div class="airplane-icon"></div> <!-- Airplane Icon -->
+            <h1>Welcome to Star Mir Airline</h1>
+            <h2>Login to Your Account</h2>
+            <div class="input-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button class="login-btn">Login</button>
+            <a href="#">Forgot your password?</a> <!-- Separated link from Sign Up button -->
+            <button class="signup-btn">Sign Up</button> <!-- New Sign Up button -->
+        </div>
+        <!-- Floating Elements -->
+        <div class="floating-elements"></div>
+        <div class="floating-elements"></div>
+        <div class="floating-elements"></div>
+    </div>
+</body>
+</html>

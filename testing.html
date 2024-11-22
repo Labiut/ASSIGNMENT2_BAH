@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR MIR AIRLINE - BEST AIRLINE FOR YOU</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+</head>
+<body>
+    <header>
+        <div class="logo">STARMIR.COM</div>
+        <nav>
+            <ul>
+                <li><a href="#">USER LOGIN</a></li>
+                <li><a href="#" class="active">FLIGHTS</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="hero">
+            <div class="hero-content">
+             
+                
+<div class="option-icon">
+                    <i class="fas fa-users"></i>
+                    <button class="dropdown-button" onclick="toggleDropdown()">Passengers</button>
+                    <div class="dropdown-content" id="passengerDropdown">
+                        <div class="passenger-control">
+                            <span>Adults<br> <small>Age 12+</small></span>
+                            <button onclick="changePassengerCount(-1, 'adult')">-</button>
+                            <input type="number" id="adult" value="1" readonly>
+                            <button onclick="changePassengerCount(1, 'adult')">+</button>
+                        </div>
+                        <div class="passenger-control">
+                            <span>Children<br> <small>Age 2-11</small></span>
+                            <button onclick="changePassengerCount(-1, 'child')">-</button>
+                            <input type="number" id="child" value="0" readonly>
+                            <button onclick="changePassengerCount(1, 'child')">+</button>
+                        </div>
+                        <div class="passenger-control">
+                            <span>Infants<br> <small>Below 2</small></span>
+                            <button onclick="changePassengerCount(-1, 'infant')">-</button>
+                            <input type="number" id="infant" value="0" readonly>
+                            <button onclick="changePassengerCount(1, 'infant')">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-icon">
+                    <i class="fas fa-chair"></i>
+                    <select id="seatType">
+                        <option value="economy">Economy</option>
+                        <option value="business">Premium Economy</option>
+						<option value="business">Business</option>
+						<option value="business">First Class</option>
+                    </select>
+                </div>
+            </div>
+
+            
+            <div class="box-container">
+                <div class="box">
+                    <label>From</label>
+                    <input type="text" id="from-input" placeholder="City or Airport" onkeyup="showSuggestions(this.value, 'from-suggestions')">
+                    <div id="from-suggestions" class="suggestions"></div> 
+                    
+                    <label>To</label>
+                    <input type="text" id="to-input" placeholder="City or Airport" onkeyup="showSuggestions(this.value, 'to-suggestions')">
+                    <div id="to-suggestions" class="suggestions"></div> 
+                </div>
+
+                <div class="box">
+                    <label>Departure Date</label>
+                    <input type="date" id="departureDate">
+                    <label>Return Date</label>
+                    <input type="date" id="returnDate">
+                </div>
+            </div>
+
+            <div class="search-button-box">
+                <button class="search-button">Search Flights</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    <p>&copy; 2024 Star Mir Aviation. All rights reserved.</p>
+    <address>
+        Star Mir Aviation, 123 Aviation Lane, Kuala Lumpur International Airport (KLIA), 64000 Sepang, Selangor, Malaysia.
+    </address>
+</footer>
+
+
+    <script>
+        // Sample countries data
+        const countries = ["United States", "Canada", "United Kingdom", "Australia", "Germany", "France", "Italy", "Spain", "Japan", "China","Kuala Lumpur", "Korea", "Japan", "Berlin", "Russia", "New Zealand", "Mexico", "Netherland", "Sabah","Sarawak", "Turkey",
+"Denmark", "Thailand", "Krabi", "Iceland", "Hong Kong", "Singapore" ];
+
+        // Function to show suggestions based on user input
+        function showSuggestions(input, suggestionsId) {
+            const suggestionsBox = document.getElementById(suggestionsId);
+            suggestionsBox.innerHTML = ''; // Clear previous suggestions
+
+            if (input.length === 0) {
+                suggestionsBox.style.display = 'none'; // Hide suggestions if input is empty
+                return;
+            }
+
+            const filteredCountries = countries.filter(country => country.toLowerCase().startsWith(input.toLowerCase()));
+            if (filteredCountries.length === 0) {
+                suggestionsBox.style.display = 'none'; // Hide suggestions if no match
+                return;
+            }
+
+            filteredCountries.forEach(country => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.textContent = country;
+                suggestionItem.onclick = () => {
+                    document.getElementById(suggestionsId.replace('-suggestions', '-input')).value = country; // Fill input with selected country
+                    suggestionsBox.style.display = 'none'; // Hide suggestions after selection
+                };
+                suggestionsBox.appendChild(suggestionItem);
+            });
+
+            suggestionsBox.style.display = 'block'; // Show suggestions
+        }
+
+        // Function to change passenger count
+        function changePassengerCount(change, type) {
+            const inputField = document.getElementById(type);
+            let currentValue = parseInt(inputField.value);
+            currentValue += change;
+            if (currentValue < 0) currentValue = 0; // Prevent negative values
+            inputField.value = currentValue;
+        }
+
+        // Function to toggle dropdown visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById("passengerDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Scroll to the search section
+        function scrollToSearch() {
+            const searchSection = document.getElementById('search-flights');
+            searchSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html> 
+
